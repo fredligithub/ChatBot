@@ -47,7 +47,7 @@ namespace BotApplication_1.Game
             using (StateClient stateClient = activity.GetStateClient())
             {
                 IBotState chatbotState = stateClient.BotState;
-                BotData chatbotData = await chatbotState.GetUserDataAsync(activity.Id, activity.From.Id);
+                BotData chatbotData = await chatbotState.GetUserDataAsync(activity.ChannelId, activity.From.Id);
                 Queue<PlaySore> scoreQueue = chatbotData.GetProperty<Queue<PlaySore>>(property: "scores");
 
                 if (scoreQueue == null)
