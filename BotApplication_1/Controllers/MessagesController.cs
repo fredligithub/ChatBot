@@ -27,8 +27,32 @@ namespace BotApplication_1
                 //await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
 
                 //Your Customization Logical Code
-                var game = new Game.RPSGame();
-                string message = game.Play(activity.Text);
+                string message = string.Empty;
+                var state = new Game.GameState();
+
+                if (activity.Text.ToLower().Contains("score"))
+                {
+                    message = await state.GetScoresAsync(activity);
+                }
+                else if (activity.Text.ToLower().Contains("delete"))
+                {
+                    message = await state.DeleteScoreAsync(activity);
+                }
+                else
+                {
+                    var game = new Game.RPSGame();
+                    message = game.Play(activity.Text);
+
+                    if(message.ToLower().Contains("tie"))
+                    {
+                        await state.AddTieAsync(activity);
+                    }
+                    else
+                    {
+                        bool userWin = message.ToLower().Contains("win");
+                        await state.UpdateScoreAsync(activity, userWin);
+                    }
+                }
 
                 //Create Reply to Bot
                 //Activity reply = activity.CreateReply(message, locale: "en-US");

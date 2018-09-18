@@ -154,6 +154,7 @@
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Extensions\ActivityExtensions.cs" />
     <Compile Include="Extensions\SystemMessages.cs" />
+    <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\RPSGame.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
