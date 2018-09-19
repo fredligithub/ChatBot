@@ -84,7 +84,7 @@ namespace BotApplication_1.Game
             using (StateClient stateClient = activity.GetStateClient())
             {
                 IBotState chatbotState = stateClient.BotState;
-                BotData chatbotData = await chatbotState.GetUserDataAsync(activity.Id, activity.From.Id);
+                BotData chatbotData = await chatbotState.GetUserDataAsync(activity.ChannelId, activity.From.Id);
 
                 int ties = chatbotData.GetProperty<int>(property: "ties");
 

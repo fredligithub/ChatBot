@@ -45,10 +45,16 @@ namespace BotApplication_1
 
                     if(message.ToLower().Contains("tie"))
                     {
+                        //Update "Tie" result
                         await state.AddTieAsync(activity);
+                    }
+                    else if(message.ToLower().Contains("type"))
+                    {
+                        //Invalid input, do nothing
                     }
                     else
                     {
+                        //User win or Bot win
                         bool userWin = message.ToLower().Contains("win");
                         await state.UpdateScoreAsync(activity, userWin);
                     }
