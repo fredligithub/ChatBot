@@ -14,6 +14,7 @@ namespace BotApplication_1.Game
         {
             public DateTime Date { get; set; } = DateTime.Now;
             public bool UserWin { get; set; }
+
         }
 
         public async Task<string> GetScoresAsync(Activity activity)
